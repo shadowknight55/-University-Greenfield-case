@@ -1,9 +1,17 @@
-// app.js
-const express = require("express");
-const path = require("path");
-const dotenv = require("dotenv");
-const bodyParser = require("body-parser");
-const { sequelize } = require("./models");
+import express from "express";
+import path from "path";
+import dotenv from "dotenv";
+import bodyParser from "body-parser";
+import studentRoutes from "./routes/students.js"; // Import student routes
+import indexRoutes from "./routes/index.js"; // Import index routes
+import authRoutes from "./routes/auth.js"; // Import auth routes
+import sequelize from "./config/database.js"; // Import sequelize instance
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config();
 
@@ -16,19 +24,17 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Routes
-const indexRoutes = require("./routes/index");
-const authRoutes = require("./routes/auth");
-const studentRoutes = require("./routes/student");
-
-app.use("/", indexRoutes);
-app.use("/auth", authRoutes);
-app.use("/student", studentRoutes);
+app.use("/", indexRoutes); // Register the index routes
+app.use("/auth", authRoutes); // Register auth routes
+app.use("/student", studentRoutes); // Register student routes
 
 // Database connection
 sequelize.sync().then(() => {
   console.log("Database connected!");
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
+}).catch(err => {
+  console.error("Error syncing database:", err);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });

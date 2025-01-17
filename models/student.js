@@ -1,6 +1,5 @@
-// models/student.js
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+import { DataTypes } from "sequelize";
+import sequelize from "../config/database.js";
 
 const Student = sequelize.define("Student", {
   id: {
@@ -29,6 +28,10 @@ const Student = sequelize.define("Student", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  balance: {
+    type: DataTypes.DECIMAL,
+    defaultValue: 0,
+  },
 });
 
-module.exports = Student;
+export default Student;
