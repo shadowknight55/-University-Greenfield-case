@@ -8,6 +8,7 @@ router.post("/", async (req, res) => {
   try {
     const newStudent = await Student.create({ firstname, lastname, email, phone, password });
     res.status(201).json(newStudent); // Respond with the created student
+    
   } catch (error) {
     console.error("Error creating student:", error);
     res.status(500).send("Error creating student.");
