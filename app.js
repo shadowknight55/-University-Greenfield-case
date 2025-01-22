@@ -2,7 +2,6 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-import studentRoutes from "./routes/students.js"; // Import student routes
 import indexRoutes from "./routes/index.js"; // Import index routes
 import authRoutes from "./routes/auth.js"; // Import auth routes
 import sequelize from "./config/database.js"; // Import sequelize instance
@@ -32,7 +31,6 @@ app.use((req, res, next) => {
 
 app.use("/", indexRoutes); // Register the index routes
 app.use("/auth", authRoutes); // Register auth routes
-app.use("/student", studentRoutes); // Register student routes
 
 // Database connection
 sequelize.sync().then(() => {
