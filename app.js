@@ -24,6 +24,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Logging middleware to track requests
+app.use((req, res, next) => {
+  console.log(`Request URL: ${req.url}`);
+  next();
+});
+
 app.use("/", indexRoutes); // Register the index routes
 app.use("/auth", authRoutes); // Register auth routes
 app.use("/student", studentRoutes); // Register student routes

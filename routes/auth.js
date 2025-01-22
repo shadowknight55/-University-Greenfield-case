@@ -17,6 +17,7 @@ router.post("/register", async (req, res) => {
   const { firstname, lastname, email, phone, password } = req.body;
   try {
     const newStudent = await Student.create({ firstname, lastname, email, phone, password });
+    console.log("Student registered:", newStudent); // Log the new student
     res.redirect("/students/dashboard"); // Redirect to the student dashboard
   } catch (error) {
     console.error("Error creating student:", error);
@@ -30,7 +31,7 @@ router.post("/login", async (req, res) => {
   try {
     const student = await Student.findOne({ where: { email, password } });
     if (student) {
-      // Redirect to the student dashboard if login is successful
+      console.log("Student logged in:", student); // Log the logged-in student
       res.redirect("/students/dashboard");
     } else {
       res.status(401).send("Invalid credentials");

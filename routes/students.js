@@ -16,6 +16,7 @@ router.post("/", async (req, res) => {
 
 // Route to render the student dashboard
 router.get("/dashboard", (req, res) => {
+  console.log("Accessing student dashboard"); // Log to confirm access
   res.render("student"); // Render the student dashboard
 });
 
