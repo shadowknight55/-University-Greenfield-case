@@ -5,6 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
   <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgb(0,0,0); 
+      background-color: rgba(0,0,0,0.4); 
+      padding-top: 60px; 
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto; 
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; 
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -30,13 +65,62 @@
       <label>
         <input type="checkbox" name="terms" required> I agree to the terms and conditions
       </label>
+      <a href="#" id="termsLink">View Terms and Conditions</a>
       
       <button type="submit">Register</button>
     </form>
     <a href="/"><button>Back</button></a>
   </main>
+  
+  <!-- Modal -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Terms and Conditions</h2>
+      <p>Please read these terms and conditions carefully before using our service.</p>
+      <h3>1. Acceptance of Terms</h3>
+      <p>By using this service, you agree to these terms and conditions.</p>
+      <h3>2. Changes to Terms</h3>
+      <p>We may update these terms from time to time. You are advised to review this page periodically for any changes.</p>
+      <h3>3. User Responsibilities</h3>
+      <p>You agree to use the service only for lawful purposes.</p>
+      <h3>4. Limitation of Liability</h3>
+      <p>We are not liable for any damages arising from your use of the service.</p>
+      <h3>5. Governing Law</h3>
+      <p>These terms are governed by the laws of the jurisdiction.</p>
+    </div>
+  </div>
+
   <footer>
-    <p>&copy; 2025 -University-Greenfield. All rights reserved.</p>
+    <p>&copy; 2025 - University Greenfield. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("termsModal");
+
+    // Get the link that opens the modal
+    var link = document.getElementById("termsLink");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the link, open the modal 
+    link.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
