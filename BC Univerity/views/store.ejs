@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Store - University Greenfield</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the School Store</h1>
+    </header>
+    <main class="container">
+        <h2>Your Balance: $<span id="balance"><%= balance.toFixed(2) %></span></h2> <!-- Updated balance display -->
+        <h2>Available Items</h2>
+        <ul>
+            <li>
+                <strong>Microwavable Meals</strong> - $5.00 (Quantity: <span id="quantity-1">10</span>)
+                <button onclick="purchaseItem(1, 'Microwavable Meals', 5.00, 10)">Purchase</button>
+            </li>
+            <li>
+                <strong>Snacks</strong> - $1.50 (Quantity: <span id="quantity-2">20</span>)
+                <button onclick="purchaseItem(2, 'Snacks', 1.50, 20)">Purchase</button>
+            </li>
+            <li>
+                <strong>Beverages</strong> - $2.00 (Quantity: <span id="quantity-3">15</span>)
+                <button onclick="purchaseItem(3, 'Beverages', 2.00, 15)">Purchase</button>
+            </li>
+            <li>
+                <strong>T-shirts</strong> - $15.00 (Quantity: <span id="quantity-4">30</span>)
+                <button onclick="purchaseItem(4, 'T-shirts', 15.00, 30)">Purchase</button>
+            </li>
+            <li>
+                <strong>Hoodies</strong> - $25.00 (Quantity: <span id="quantity-5">25</span>)
+                <button onclick="purchaseItem(5, 'Hoodies', 25.00, 25)">Purchase</button>
+            </li>
+            <li>
+                <strong>Accessories</strong> - $10.00 (Quantity: <span id="quantity-6">40</span>)
+                <button onclick="purchaseItem(6, 'Accessories', 10.00, 40)">Purchase</button>
+            </li>
+        </ul>
+        <a href="/">Back to Main Screen</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 - University Greenfield. All rights reserved.</p>
+    </footer>
+    <script>
+        // Function to handle item purchases
+        function purchaseItem(itemId, itemName, itemPrice, currentQuantity) {
+            if (currentQuantity <= 0) {
+                alert("Item is out of stock.");
+                return;
+            }
+            const confirmPurchase = confirm("Do you want to purchase: " + itemName + " for $" + itemPrice + "?");
+            if (confirmPurchase) {
+                // Send a request to the server to process the purchase
+                fetch('/store/purchase', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ itemId, itemPrice }),
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Update the user's balance directly
+                        const balanceElement = document.getElementById("balance");
+                        const currentBalance = parseFloat(balanceElement.innerText);
+                        balanceElement.innerText = (currentBalance - itemPrice).toFixed(2); // Decrease balance
+
+                        // Update the quantity displayed on the page
+                        const quantityElement = document.getElementById("quantity-" + itemId);
+                        quantityElement.innerText = currentQuantity - 1; // Decrease quantity by 1
+                        alert("You have purchased: " + itemName);
+                    } else {
+                        alert("Purchase failed: " + response.statusText);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error during purchase:", error);
+                    alert("An error occurred while processing your purchase.");
+                });
+            }
+        }
+    </script>
+</body>
+</html>
