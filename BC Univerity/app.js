@@ -3,7 +3,7 @@ import path from "path";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import session from "express-session"; // Import express-session
-import indexRoutes from "./routes/index.js"; // Import index rout
+import indexRoutes from "./routes/index.js"; // Import index routes
 import authRoutes from "./routes/auth.js"; // Import auth routes
 import storeRoutes from "./routes/store.js"; // Import store routes
 import sequelize from "./config/database.js"; // Import sequelize instance
