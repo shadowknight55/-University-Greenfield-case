@@ -1,9 +1,16 @@
 # University Greenfield Project
 
 ## Description
-This project is a web application for managing student registrations, courses, and account balances. It allows students to register, log in, and manage their accounts, including adding money to their balances and purchasing items from a school store.
+This project is a web application for managing student registrations, courses, and account balances. It allows students to register, log in, and manage their accounts, as well as purchase items from the school store.
 
-## Installation Instructions
+## Features
+- User authentication (login and registration)
+- View and manage account balance
+- Purchase items from the school store
+- Course calendar display
+- Responsive design using Bootstrap
+
+## Installation
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/university-greenfield.git
@@ -12,29 +19,20 @@ This project is a web application for managing student registrations, courses, a
    ```bash
    cd university-greenfield
    ```
-3. Install the required dependencies:
+3. Install the dependencies:
    ```bash
    npm install
    ```
-4. Set up the database (if applicable) and configure the environment variables.
 
 ## Usage
 1. Start the application:
    ```bash
    npm start
    ```
-2. Open your browser and navigate to `http://localhost:3000`.
-3. Register a new account or log in with existing credentials.
-4. Use the dashboard to manage your courses and account balance.
-
-## Features
-- User registration and login
-- Account balance management
-- Terms and conditions agreement
-- Item purchasing functionality
+2. Open your browser and navigate to `http://localhost:3000` to access the application.
 
 ## Contributing
-Contributions are welcome! Please submit a pull request or open an issue for any suggestions or improvements.
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or features you'd like to add.
 
 ## License
 This project is licensed under the MIT License.
