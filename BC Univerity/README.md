@@ -8,8 +8,6 @@ This project is a web application for managing student registrations, courses, a
 - View and manage account balance
 - Purchase items from the school store
 - Course calendar display
-- Responsive design using Bootstrap
-
 ## Installation
 1. Clone the repository:
    ```bash
@@ -19,6 +17,7 @@ This project is a web application for managing student registrations, courses, a
    ```bash
    cd university-greenfield
    ```
+
 3. Install the dependencies:
    ```bash
    npm install
