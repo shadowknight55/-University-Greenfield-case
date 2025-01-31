@@ -1,25 +1,51 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #0078d7;
+    background-color: #0056b3;
     color: white;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 footer {
-    background-color: #0078d7;
+    background-color: #0056b3;
     color: white;
     text-align: center;
-    padding: 10px;
-    position: relative; /* Changed from absolute to relative */
+    padding: 15px;
+    position: relative;
     width: 100%;
+}
+
+/* Container */
+.container {
+    margin: 20px auto;
+    max-width: 900px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
 
 /* Form Styles */
@@ -27,15 +53,16 @@ form {
     margin: auto;
     padding: 20px;
     max-width: 400px;
-    background-color: white;
+    background-color: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="tel"] {
+input[type="tel"],
+input[type="number"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -43,31 +70,15 @@ input[type="tel"] {
     border-radius: 4px;
 }
 
-button {
-    background-color: #0078d7;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-button:hover {
-    background-color: #005bb5;
-}
-
-h1, h2 {
-    text-align: center;
-    color: #333;
-}
-
-.container {
-    margin: 20px auto;
-    max-width: 800px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
 /* Calendar Styles */
@@ -86,9 +97,20 @@ h1, h2 {
 }
 
 .course {
-    background-color: #0078d7;
+    background-color: #007bff;
     color: white;
     padding: 5px;
     border-radius: 4px;
     text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    form {
+        max-width: 100%;
+    }
 }

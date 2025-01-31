@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1>Welcome to Your Dashboard</h1>
-    <h2>Hello, <%= studentName %>!</h2> <!-- Added student's name -->
+    <h2>Hello, <%= studentName %>!</h2>
   </header>
   <main class="container">
     <h2>Your Courses</h2>
@@ -23,25 +23,28 @@
         <div class="day">Fri</div>
         <div class="day">Sat</div>
         <div class="day">Sun</div>
-        <!-- Placeholder for course entries -->
         <div class="course">Math 101</div>
         <div class="course">History 201</div>
         <div class="course">Biology 102</div>
         <div class="course">Chemistry 103</div>
+        <div class="course">Physics 104</div>
+        <div class="course">Literature 105</div>
+        <div class="course">Art 106</div>
+        <div class="course">Computer Science 107</div>
       </div>
     </div>
     <h2>Your Account Balance</h2>
     <div id="account-balance">
       <p>Your current balance: $<span id="balance">0.00</span></p>
     </div>
-    <div style="text-align: center; margin-top: 20px;">
+    <div class="button-container">
       <form id="add-money-form">
         <input type="number" name="amount" placeholder="Enter amount" required>
         <input type="hidden" name="studentId" value="<%= studentId %>">
         <button type="submit">Add Money</button>
       </form>
       <a href="/store">Go to School Store</a>
-      <a href="/">Back to Main Page</a> <!-- Updated button to link to the main page -->
+      <a href="/">Back to Main Page</a>
     </div>
   </main>
   <footer>

@@ -11,32 +11,62 @@
         <h1>Welcome to the School Store</h1>
     </header>
     <main class="container">
-        <h2>Your Balance: $<span id="balance"><%= balance.toFixed(2) %></span></h2> <!-- Updated balance display -->
+        <h2>Your Balance: $<span id="balance"><%= balance.toFixed(2) %></span></h2>
         <h2>Available Items</h2>
         <ul>
             <li>
-                <strong>Microwavable Meals</strong> - $5.00 (Quantity: <span id="quantity-1">10</span>)
-                <button onclick="purchaseItem(1, 'Microwavable Meals', 5.00, 10)">Purchase</button>
+                <div class="item-card">
+                    <strong>Microwavable Meals</strong> - $5.00 (Quantity: <span id="quantity-1">10</span>)
+                    <button onclick="purchaseItem(1, 'Microwavable Meals', 5.00, 10)">Purchase</button>
+                </div>
             </li>
             <li>
-                <strong>Snacks</strong> - $1.50 (Quantity: <span id="quantity-2">20</span>)
-                <button onclick="purchaseItem(2, 'Snacks', 1.50, 20)">Purchase</button>
+                <div class="item-card">
+                    <strong>Snacks</strong> - $1.50 (Quantity: <span id="quantity-2">20</span>)
+                    <button onclick="purchaseItem(2, 'Snacks', 1.50, 20)">Purchase</button>
+                </div>
             </li>
             <li>
-                <strong>Beverages</strong> - $2.00 (Quantity: <span id="quantity-3">15</span>)
-                <button onclick="purchaseItem(3, 'Beverages', 2.00, 15)">Purchase</button>
+                <div class="item-card">
+                    <strong>Beverages</strong> - $2.00 (Quantity: <span id="quantity-3">15</span>)
+                    <button onclick="purchaseItem(3, 'Beverages', 2.00, 15)">Purchase</button>
+                </div>
             </li>
             <li>
-                <strong>T-shirts</strong> - $15.00 (Quantity: <span id="quantity-4">30</span>)
-                <button onclick="purchaseItem(4, 'T-shirts', 15.00, 30)">Purchase</button>
+                <div class="item-card">
+                    <strong>T-shirts</strong> - $15.00 (Quantity: <span id="quantity-4">30</span>)
+                    <button onclick="purchaseItem(4, 'T-shirts', 15.00, 30)">Purchase</button>
+                </div>
             </li>
             <li>
-                <strong>Hoodies</strong> - $25.00 (Quantity: <span id="quantity-5">25</span>)
-                <button onclick="purchaseItem(5, 'Hoodies', 25.00, 25)">Purchase</button>
+                <div class="item-card">
+                    <strong>Hoodies</strong> - $25.00 (Quantity: <span id="quantity-5">25</span>)
+                    <button onclick="purchaseItem(5, 'Hoodies', 25.00, 25)">Purchase</button>
+                </div>
             </li>
             <li>
-                <strong>Accessories</strong> - $10.00 (Quantity: <span id="quantity-6">40</span>)
-                <button onclick="purchaseItem(6, 'Accessories', 10.00, 40)">Purchase</button>
+                <div class="item-card">
+                    <strong>Accessories</strong> - $10.00 (Quantity: <span id="quantity-6">40</span>)
+                    <button onclick="purchaseItem(6, 'Accessories', 10.00, 40)">Purchase</button>
+                </div>
+            </li>
+            <li>
+                <div class="item-card">
+                    <strong>Notebooks</strong> - $3.00 (Quantity: <span id="quantity-7">50</span>)
+                    <button onclick="purchaseItem(7, 'Notebooks', 3.00, 50)">Purchase</button>
+                </div>
+            </li>
+            <li>
+                <div class="item-card">
+                    <strong>Pens</strong> - $1.00 (Quantity: <span id="quantity-8">100</span>)
+                    <button onclick="purchaseItem(8, 'Pens', 1.00, 100)">Purchase</button>
+                </div>
+            </li>
+            <li>
+                <div class="item-card">
+                    <strong>Backpacks</strong> - $30.00 (Quantity: <span id="quantity-9">15</span>)
+                    <button onclick="purchaseItem(9, 'Backpacks', 30.00, 15)">Purchase</button>
+                </div>
             </li>
         </ul>
         <a href="/">Back to Main Screen</a>
@@ -53,7 +83,6 @@
             }
             const confirmPurchase = confirm("Do you want to purchase: " + itemName + " for $" + itemPrice + "?");
             if (confirmPurchase) {
-                // Send a request to the server to process the purchase
                 fetch('/store/purchase', {
                     method: 'POST',
                     headers: {
@@ -63,14 +92,11 @@
                 })
                 .then(response => {
                     if (response.ok) {
-                        // Update the user's balance directly
                         const balanceElement = document.getElementById("balance");
                         const currentBalance = parseFloat(balanceElement.innerText);
-                        balanceElement.innerText = (currentBalance - itemPrice).toFixed(2); // Decrease balance
-
-                        // Update the quantity displayed on the page
+                        balanceElement.innerText = (currentBalance - itemPrice).toFixed(2);
                         const quantityElement = document.getElementById("quantity-" + itemId);
-                        quantityElement.innerText = currentQuantity - 1; // Decrease quantity by 1
+                        quantityElement.innerText = currentQuantity - 1;
                         alert("You have purchased: " + itemName);
                     } else {
                         alert("Purchase failed: " + response.statusText);
